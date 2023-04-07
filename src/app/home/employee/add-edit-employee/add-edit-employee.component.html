@@ -1,0 +1,107 @@
+<form [formGroup]="profileForm" novalidate #myForm="ngForm">
+  <mat-card>
+    <mat-card-title *ngIf="!page">
+      <button mat-icon-button routerLink="/home/employee/list">
+        <mat-icon>keyboard_backspace</mat-icon></button>
+      NEW USER
+    </mat-card-title>
+    <mat-card-title *ngIf="page==true">
+      <button mat-icon-button routerLink="/home/employee/list">
+        <mat-icon>keyboard_backspace</mat-icon></button>
+      Edit Info
+    </mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content style="padding: 20px;">
+      <div class="formdiv">
+        <div class="formdiv2">
+          <!--Photo image-->
+          <div>
+            <h1>Upload Profile Photo</h1>
+            <input type="file" hidden (change)="Pic($event)" #fileInput formControlName="fPics">
+            <div class="dropzone" (click)="fileInput.click()" *ngIf="btnshow5">
+              <div class="centered"> Drop your file here <br> OR <br> Click Here To Upload </div>
+            </div>
+            <div *ngIf="show5" class="iconclose">
+              <img src="{{Pics}}" alt="">
+              <button mat-icon-button class="closebtn" (click)="closepic5()"><mat-icon>close</mat-icon></button>
+            </div>
+          </div>
+        </div>
+        <div class="formdiv1">
+          <!---Name-->
+          <div class="example-container">
+            <mat-form-field class="inpufield">
+              <mat-label>First Name</mat-label>
+              <input type="Name" matInput placeholder="Enter First Name" formControlName="firstName">
+            </mat-form-field>
+          </div>
+          <div class="example-container">
+            <mat-form-field class="inpufield">
+              <mat-label>Middle Name</mat-label>
+              <input type="Name" matInput placeholder="Enter Middle Name" formControlName="middleName">
+            </mat-form-field>
+          </div>
+          <div class="example-container">
+            <mat-form-field class="inpufield">
+              <mat-label>Last Name</mat-label>
+              <input type="Name" matInput placeholder="Enter Last Name" formControlName="lastName">
+            </mat-form-field>
+          </div>
+          <!---number-->
+          <div class="example-container">
+            <mat-form-field class="inpufield">
+              <mat-label>Email</mat-label>
+              <input type="Email" matInput formControlName="email" placeholder="Enter Email">
+            </mat-form-field>
+          </div>
+          <div class="example-container">
+            <mat-form-field class="inpufield">
+              <mat-label>Mobile</mat-label>
+              <input type="Mobile" matInput formControlName="mobile" placeholder="Enter Mobile">
+            </mat-form-field>
+          </div>
+          <div class="example-container">
+            <mat-form-field class="inpufield">
+              <mat-label>Alternate Mobile Number</mat-label>
+              <input type="Mobile" matInput formControlName="altermobile" placeholder="Enter Alternate Mobile Number">
+            </mat-form-field>
+          </div>
+          <!---dob-->
+          <div class="example-container">
+            <mat-form-field class="inpufield">
+              <mat-label>DOB</mat-label>
+              <input type="DOB" matInput formControlName="dob" placeholder="Enter DOB">
+            </mat-form-field>
+          </div>
+          <!---Addres -->
+          <div class="example-container">
+            <mat-form-field class="inpufield">
+              <mat-label>Address</mat-label>
+              <input type="Address" matInput formControlName="address" placeholder="Enter Address">
+            </mat-form-field>
+          </div>
+          <div class="example-container">
+            <mat-form-field class="inpufield">
+              <mat-label>State</mat-label>
+              <input type="State" matInput formControlName="state" placeholder="Enter State">
+            </mat-form-field>
+          </div>
+          <div class="example-container">
+            <mat-form-field class="inpufield">
+              <mat-label>City</mat-label>
+              <input type="City" matInput formControlName="city" placeholder="Enter City">
+            </mat-form-field>
+          </div>
+        </div>
+
+      </div>
+    </mat-card-content>
+    <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 30px;">
+      <button mat-raised-button color="primary" (click)="addemployee()" *ngIf="!page"
+        routerLink="/home/employee/list"><mat-icon>save</mat-icon>Submit</button>
+      <button mat-raised-button color="primary" (click)="updatedatatable()" *ngIf="page==true"
+        routerLink="/home/employee/list"><mat-icon>save</mat-icon>update</button>
+      <button mat-raised-button><mat-icon>cancel</mat-icon>Cancel</button>
+    </div>
+  </mat-card>
+</form>

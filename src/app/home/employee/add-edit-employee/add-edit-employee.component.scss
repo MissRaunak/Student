@@ -1,0 +1,85 @@
+.mat-mdc-card-title,
+.mat-mdc-card-subtitle {
+  font-weight: 500;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.iconclose {
+  position: relative;
+  width: 185px;
+  margin: auto;
+
+  img {
+    width: 185px;
+    height: 133px;
+  }
+}
+
+.closebtn {
+  position: absolute;
+  background: #fff;
+  width: 30px;
+  height: 30px;
+  right: 0;
+  box-shadow: 0 0 1rem #0003;
+
+  .mat-icon {
+    font-size: 1.1rem;
+    line-height: 0.8;
+  }
+}
+
+.formdiv {
+
+  align-items: stretch;
+  grid-gap: 1rem;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+
+  .formdiv1 {
+    padding: 1rem;
+    transition: all .25s linear;
+    border: 2px solid #eeeeee;
+    width: 100%;
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+
+  .formdiv2 {
+    transition: all 0.25s linear;
+    border: 2px solid #eeeeee;
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+
+    h1 {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 50px;
+      text-decoration: underline;
+    }
+
+    .dropzone {
+      min-height: 100px;
+      min-width: 100px;
+      width: 75%;
+      margin: auto;
+      display: table;
+      background-color: #fff;
+      border: dotted 1px #3f51b5;
+      cursor: pointer;
+
+      .centered {
+        font-size: 1em;
+        font-weight: bold;
+        text-align: center;
+        padding: 35px;
+      }
+    }
+  }
+}

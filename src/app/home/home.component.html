@@ -1,0 +1,23 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+
+    <mat-nav-list>
+      <a mat-list-item routerLinkActive="active" routerLink="dashboard"
+        [routerLinkActiveOptions]="{exact:true}">Dashboard<mat-icon class="listitems">dashboard</mat-icon></a>
+      <a mat-list-item routerLinkActive="active" routerLink="employee/list">Users<mat-icon
+          class="listitems">people</mat-icon></a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar style="background-color:#673ab7; color:#FFF;">
+      <button mat-icon-button (click)="drawer.toggle()"> <mat-icon>menu</mat-icon></button>
+      <h4 class="m-0">Student GIS Management System</h4>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <div style="padding: 20px;">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,114 @@
+<div class="header">
+  <div class="left_btns">
+    <button mat-icon-button routerLink="add" style="margin-right: 22px">
+      <mat-icon>add</mat-icon>
+    </button>
+    <div class="divider"></div>
+    <button mat-icon-button (click)="refresh()">
+      <mat-icon>refresh</mat-icon>
+    </button>
+
+  </div>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Search</mat-label>
+    <div style="display: flex;">
+      <input type="search" matInput (keyup)="applyFilter($event)" />
+      <mat-icon matSuffix>search</mat-icon>
+    </div>
+  </mat-form-field>
+</div>
+
+<!--------- Table ------------->
+
+<div class="mat-elevation-z8" style="position: relative;">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 " matSort>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell norecord" *ngIf="this.employeelist && this.employeelist.length>0">No data Here...</td>
+    </tr>
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 70px;">Sr.No</th>
+      <td mat-cell *matCellDef="let element" style="width: 70px;">{{element.id}}</td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell class="one" *matHeaderCellDef mat-sort-header style="width: 120px;">First&nbsp;Name</th>
+      <td mat-cell class="one" *matCellDef="let element" style="width: 120px;"> {{element.firstName}} </td>
+    </ng-container>
+    <!-- Middle Column -->
+    <ng-container matColumnDef="middleName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 120px;">Middle&nbsp;Name</th>
+      <td mat-cell class="two" *matCellDef="let element" style="width: 120px;"> {{element.middleName}} </td>
+    </ng-container>
+
+    <!-- Last Column -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 120px;">Last&nbsp;Name</th>
+      <td mat-cell *matCellDef="let element" style="width: 120px;"> {{element.lastName}} </td>
+    </ng-container>
+    <!-- Address Column -->
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+    </ng-container>
+    <!-- state Column -->
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
+      <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+    </ng-container>
+    <!-- city Column -->
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> City </th>
+      <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+    </ng-container>
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 160px;">Email
+      </th>
+      <td mat-cell *matCellDef="let element" style="width: 160px;"> {{element.email}} </td>
+    </ng-container>
+    <!-- dob Column -->
+    <ng-container matColumnDef="dob">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 120px;">DOB</th>
+      <td mat-cell *matCellDef="let element" style="width: 120px;"> {{element.dob}} </td>
+    </ng-container>
+    <!--  Mobile Column -->
+    <ng-container matColumnDef="mobile">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Mobile
+      </th>
+      <td mat-cell *matCellDef="let element"> {{element.mobile}} </td>
+    </ng-container>
+
+
+
+
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element" class="action-link">
+        <button mat-icon-button routerLinkActive="active" routerLink="../edit/{{element.id}}"><mat-icon color="primary"
+            class="action">edit</mat-icon></button>
+        <button mat-icon-button (click)="deletedata(element.id)"> <mat-icon color="warn"
+            class=" action">delete</mat-icon></button>
+      </td>
+    </ng-container>
+
+    <!-- pic Name Column -->
+    <ng-container matColumnDef="pic">
+      <th mat-header-cell *matHeaderCellDef style="width: 100px;"> Pic </th>
+      <td mat-cell *matCellDef="let element" style="width: 100px;"> <img [src]="element.Pics" /> </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+  <mat-divider style="color:#888"></mat-divider>
+  <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+  </mat-paginator>
+
+
+</div>
